@@ -1,4 +1,4 @@
-package dev.c00lgui.client;
+package xlays.c00lgui.client;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;

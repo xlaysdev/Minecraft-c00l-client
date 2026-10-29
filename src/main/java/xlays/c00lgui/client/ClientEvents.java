@@ -1,4 +1,4 @@
-package dev.c00lgui.client;
+package xlays.c00lgui.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import dev.c00lgui.CoolGui;

@@ -23,7 +23,7 @@ import xlays.c00lgui.CoolGui;
 )
 public final class ClientEvents {
 
-    private static final KeyMapping OPEN_GUI = new KeyMapping(
+    public static final KeyMapping OPEN_GUI = new KeyMapping(
             "key.c00lgui.open",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT_SHIFT,

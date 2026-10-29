@@ -12,7 +12,7 @@ public final class Fullbright extends Module {
     private boolean appliedByModule = false;
 
     public Fullbright() {
-        super("Fullbright", "Brightens dark areas using Night Vision");
+        super("fullbright", "Brightens dark areas using Night Vision", false);
     }
 
     @Override

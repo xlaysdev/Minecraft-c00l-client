@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="c00lgui"
+version="1.2.0"
+displayName="c00l gui"
+authors="OpenAI"
+description='''
+Lightweight client-style GUI, performance controls, Fullbright, entity glow, and loaded-chunk ore overlay prototype.
+'''
+
+[[dependencies.c00lgui]]
+modId="neoforge"
+type="required"
+versionRange="[21.11,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.c00lgui]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.11,1.22)"
+ordering="NONE"
+side="CLIENT"

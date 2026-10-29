@@ -1,25 +1,72 @@
+
 package xlays.c00lgui.modules.impl;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import xlays.c00lgui.modules.Module;
 
-/** Sets the vanilla brightness slider to its maximum and restores it when disabled. */
 public final class Fullbright extends Module {
-    private Double previous;
 
-    public Fullbright() { super("fullbright", "Max brightness", false); }
+    private static final int DURATION = 220;
+    private boolean appliedByModule = false;
+
+    public Fullbright() {
+        super("Fullbright", "Brightens dark areas using Night Vision");
+    }
 
     @Override
-    public void onEnable() {
+    public void onTick() {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.options == null) return;
-        previous = mc.options.gamma().get();
-        mc.options.gamma().set(1.0D);
+
+        if (mc.player == null) {
+            return;
+        }
+
+        if (!isEnabled()) {
+            removeOwnedEffect(mc);
+            return;
+        }
+
+        MobEffectInstance current =
+            mc.player.getEffect(MobEffects.NIGHT_VISION);
+
+        // Do not overwrite a Night Vision effect already present.
+        if (current != null && !appliedByModule) {
+            return;
+        }
+
+        mc.player.addEffect(new MobEffectInstance(
+            MobEffects.NIGHT_VISION,
+            DURATION,
+            0,
+            true,  // ambient
+            false, // particles
+            false  // icon
+        ));
+
+        appliedByModule = true;
     }
 
     @Override
     public void onDisable() {
-        Minecraft mc = Minecraft.getInstance();
-        if (mc.options != null && previous != null) mc.options.gamma().set(previous);
+        removeOwnedEffect(Minecraft.getInstance());
+    }
+
+    private void removeOwnedEffect(Minecraft mc) {
+        if (!appliedByModule) {
+            return;
+        }
+
+        if (mc.player != null) {
+            MobEffectInstance current =
+                mc.player.getEffect(MobEffects.NIGHT_VISION);
+
+            if (current != null) {
+                mc.player.removeEffect(MobEffects.NIGHT_VISION);
+            }
+        }
+
+        appliedByModule = false;
     }
 }

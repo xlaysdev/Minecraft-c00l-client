@@ -1,4 +1,4 @@
-package dev.c00lgui.client;
+package xlays.c00lgui.client;
 
 public final class ClientOptions {
     private ClientOptions() {}

@@ -1,4 +1,4 @@
-package dev.c00lgui;
+package xlays.c00lgui;
 
 import net.neoforged.fml.common.Mod;
 

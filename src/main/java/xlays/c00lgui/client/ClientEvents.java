@@ -1,7 +1,7 @@
 package xlays.c00lgui.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import dev.c00lgui.CoolGui;
+import xlays.c00lgui.CoolGui;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.CloudStatus;
